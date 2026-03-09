@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bedu Frontend
 
-## Getting Started
+Dự án frontend cho hệ thống quản lý giáo dục BEDU, xây dựng bằng Next.js với App Router.
 
-First, run the development server:
+## Các thành phần chính
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Cấu trúc ứng dụng (`src/app/`)
+- **(guest)/**: Các trang công khai như danh sách chương trình tự học và lớp học live.
+- **manager/**: Giao diện quản trị cho quản lý tài khoản, chương trình, lớp học, bài thi, học phí và báo cáo.
+- **teacher/**: Trang quản lý bài thi và lịch dạy cho giáo viên.
+- **my/**: Trang cá nhân cho học viên, bao gồm khóa học, lớp học, kết quả học tập.
+- **exam/**: Luồng làm bài thi với các bước chuẩn bị, thực hiện và xem kết quả.
+- **auth/**: Xử lý đăng nhập và xác thực.
+- **api/**: Các route API nội bộ.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Components (`src/components/`)
+- Bộ component tái sử dụng như `Button`, `Modal`, `Table`, `Breadcrumb`, `Charts`, `Input`, `Navigation`, `Sidebar`, `Tooltip`.
+- Các component chuyên biệt như `LessonPreview`, `ModalClass`, `ModalCourse`, `ProgramCard`, `Question`, `Rating`, `Schedule`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Contexts (`src/contexts/`)
+- `AppContext`: Quản lý trạng thái toàn cục của ứng dụng.
+- `ExamContext`: Chia sẻ trạng thái trong luồng làm bài thi (câu hỏi, thời gian, câu trả lời).
+- `MyProgramContext`: Quản lý dữ liệu chương trình của học viên.
+- `TypeContext`: Định nghĩa các kiểu dữ liệu chung.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Services (`src/services/`)
+- Các hàm gọi API để tương tác với backend, như lấy danh sách chương trình, lớp học, bài thi, thanh toán.
 
-## Learn More
+### Types (`src/types/`)
+- Định nghĩa TypeScript cho các entity như `User`, `Program`, `Class`, `Exam`, `Question`, `Payment`, `Report`.
 
-To learn more about Next.js, take a look at the following resources:
+### Helpers (`src/helpers/`)
+- Các hàm tiện ích như định dạng ngày tháng (`formatDateSchedule`), định dạng tiền tệ (`formatVND`), định dạng số thứ tự (`formatNumberToOrdinal`), định dạng thời gian (`formatTime`), và lấy tên ngày đầy đủ (`getFullDayName`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Constants (`src/constants/`)
+- Các hằng số dùng chung trong ứng dụng.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Data (`src/data/`)
+- Dữ liệu mẫu hoặc cấu hình cho các entity như class, course, exam, lesson, payment, program.
 
-## Deploy on Vercel
+### Icons (`src/icons/`)
+- Bộ icon tùy chỉnh cho ứng dụng.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Libs (`src/libs/`)
+- Các thư viện và cấu hình bổ sung, như instance Axios cho API calls.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Providers (`src/providers/`)
+- Các provider React để wrap ứng dụng, như cho authentication hoặc theme.
+
+### Styles (`src/styles/`)
+- Cấu hình styling chung.
+
+## Công nghệ sử dụng
+- **Framework**: Next.js (App Router)
+- **UI Library**: NextUI
+- **Styling**: Tailwind CSS
+- **Data Fetching**: SWR
+- **State Management**: React Context
+- **Language**: TypeScript
+- **HTTP Client**: Axios
+
+## Cài đặt và chạy
+1. Cài đặt dependencies: `npm install`
+2. Chạy development server: `npm run dev`
+3. Mở [http://localhost:3000](http://localhost:3000) để xem ứng dụng.
+
+## Triển khai
+Sử dụng Vercel hoặc các nền tảng tương thích với Next.js để triển khai production.
